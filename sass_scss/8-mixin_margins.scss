@@ -1,0 +1,17 @@
+@mixin MLR10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@mixin MLR15 {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+body {
+  @include MLR10;
+}
+
+div {
+  @include MLR15;
+}
