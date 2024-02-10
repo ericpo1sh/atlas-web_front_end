@@ -670,7 +670,7 @@
     opacity: 0;
   }
 
-  .card-work:hover .card-title a:focus {
+  .card-work:hover .card-title a {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     opacity: 1;
