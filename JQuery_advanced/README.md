@@ -1,6 +1,6 @@
 ## JQuery Advanced project
 
-### Learning Objectives :pin:
+### Learning Objectives :pushpin:
 
     Learn how to load jQuery from a CDN in a page
     Learn the different ways to create DOM elements with jQuery
