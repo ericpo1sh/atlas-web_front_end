@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <script
+			src="https://code.jquery.com/jquery-3.7.1.min.js"
+			integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+			crossorigin="anonymous">
+    </script>
+    <meta charset="utf-8" />
+    <title>Task 7</title>
+    <script type="application/javascript">
+      $(document).ready(function() {
+        function createSearchForm() {
+          var inputForm = $('<input>').attr('type', 'text');
+          var inputSubmit = $('<input>').attr('type', 'submit');
+          $('body').append(inputForm);
+          $('body').append(inputSubmit);
+          $('body').append($('<ul>'));
+          
+        }
+        function addNewArticle(id, title, snippet) {
+          var listItem = $('<li>');
+          listItem.append($('<p>').append(('<span>').text('id -'), $('<b>').text(title)));
+          listItem.append($('<p>').text(snippet));
+          $('ul').append(listItem);
+        }
+        function queryWikipedia(search) {
+          var apiURL = s;
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+
+  </body>
+
+</html>
