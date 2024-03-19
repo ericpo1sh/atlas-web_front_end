@@ -19,8 +19,8 @@
     var date = new Date();
     date.setTime(date.getTime() + (10 * 24 * 60 * 60 * 1000)); // calculating and setting the expiration date to 10 days
     var expires = "expires=" + date.toUTCString();
-    document.cookie = "firstname=" + firstname + ";" + expires;
-    document.cookie = "email=" + email + ";" + expires;
+    document.cookie = "firstname=" + firstname + ";" + expires + ";path=/";
+    document.cookie = "email=" + email + ";" + expires + ";path=/";
     }
 
     function showCookies() {
