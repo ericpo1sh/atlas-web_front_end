@@ -6,37 +6,36 @@
   <title>Task 0, Create basic cookie</title>
 </head>
 <body>
-  <script>
-    function setCookies() {
-      var firstNameVal = document.getElementById('firstname').value;
-      var emailVal = document.getElementById('email').value;
-      document.cookie = "firstname=" + firstNameVal + ";";
-      document.cookie = "email=" + emailVal + ";";
-      firstNameVal = ""; // resetting both values
-      emailVal = "";
-    }
-
-    function showCookies() {
-      var cookies = document.cookie.split(";");
-      var cookieContainer = document.createElement('div');
-
-      for (let i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i].trim().split('=');
-        var cookieName = cookie[0];
-        var cookieVal = cookie[1];
-
-        var paragraph = document.createElement('p');
-        paragraph.innerHTML = "Cookies: " + cookieName + '=' + cookieVal;
-        cookiesContainer.appendChild(p);
-      }
-      document.body.appendChild(cookieContainer);
-    }
-  </script>
   <h1>Login to the website</h1>
   <input id="firstname" placeholder="Firstname" type="text">
   <input id="email" placeholder="Email" type="text">
-  <button id="submitBtn" onclick="setCookies()">Log me in</button>
+  <button onclick="setCookies()">Log me in</button>
   <h1>Cookies</h1>
-  <button id="cookieBtn" onclick="showCookies()">Show the cookies</button>
+  <button onclick="showCookies()">Show the cookies</button>
+  <script>
+    function setCookies() {
+    var firstname = document.getElementById('firstname').value;
+    var email = document.getElementById('email').value;
+
+    document.cookie = "firstname=" + firstname + ";";
+    document.cookie = "email=" + email + ";";
+    }
+
+    function showCookies() {
+      var cookies = document.cookie.split(';');
+      var cookiesContainer = document.createElement('div');
+
+      for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i].trim().split('=');
+          var cookieName = cookie[0];
+          var cookieValue = cookie[1];
+          
+          var p = document.createElement('p');
+          p.innerHTML = "Cookies: " + cookieName + "=" + cookieValue;
+          cookiesContainer.appendChild(p);
+      }
+      document.body.appendChild(cookiesContainer);
+    }
+  </script>
 </body>
 </html>
