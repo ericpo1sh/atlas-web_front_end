@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 2, Read cookie</title>
+</head>
+<body>
+  <h1>Login to the website</h1>
+  <input id="firstname" placeholder="Firstname" type="text">
+  <input id="email" placeholder="Email" type="text">
+  <button onclick="setCookies()">Log me in</button>
+  <h1>Cookies</h1>
+  <button onclick="showCookies()">Show the cookies</button>
+  <script>
+    function setCookies() {
+    var firstname = document.getElementById('firstname').value;
+    var email = document.getElementById('email').value;
+    var date = new Date();
+    date.setTime(date.getTime() + (10 * 24 * 60 * 60 * 1000)); // calculating and setting the expiration date to 10 days
+    var expires = "expires=" + date.toUTCString();
+    document.cookie = "firstname=" + firstname + ";" + expires + ";path=/";
+    document.cookie = "email=" + email + ";" + expires + ";path=/";
+    }
+
+    function showCookies() {
+      var cookies = document.cookie.split(';');
+      var cookiesContainer = document.createElement('div');
+
+      var p = document.createElement('p');
+      p.innerHTML = `Email: ${getCookie("email")} - Firstname: ${getCookie("firstname")}`
+      cookiesContainer.appendChild(p);
+      document.body.appendChild(cookiesContainer);
+    }
+
+    function getCookie(name) {
+      var cDecoded = decodeURIComponent(document.cookie);
+      var cArray = cDecoded.split('; ');
+      let result = "";
+      cArray.forEach(element => {
+        if (element.indexOf(name) == 0) {
+          result = element.substring(name.length + 1);
+        }
+      })
+    return result;
+    }
+  </script>
+</body>
+</html>
