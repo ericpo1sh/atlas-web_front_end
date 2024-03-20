@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 4, Use js-cookie</title>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+</head>
+<body>
+  <div id="loginForm">
+    <h2>Login to the website</h2>
+    <input id="firstname" placeholder="Firstname" type="text">
+    <input id="email" placeholder="Email" type="text">
+    <button onclick="setCookies()">Log me in</button>
+  </div>
+  <script>
+    function setCookies() {
+    var firstname = document.getElementById('firstname').value;
+    var email = document.getElementById('email').value;
+    const date = new Date();
+    date.setDate(date.getDate() + 10);
+    Cookies.set('firstname', firstname, {expires: date});
+    Cookies.set('email', email, {expires: date});
+    showWelcomeMessageOrForm();
+    }
+
+    function showCookies() {
+      var cookiesContainer = document.createElement('div');
+
+      var p = document.createElement('p');
+      p.innerHTML = `Email: ${Cookies.get("email")} - Firstname: ${Cookies.get("firstname")}`
+      cookiesContainer.appendChild(p);
+      document.body.appendChild(cookiesContainer);
+    }
+
+    function showForm() {
+      var welcomeMessage = document.getElementById('welcome');
+      if (welcomeMessage) {
+        welcomeMessage.remove();
+      }
+    document.getElementById('loginForm').style.display = "block";
+    }
+
+    function hideForm() {
+      document.getElementById('loginForm').style.display = "none";
+    }
+
+    function deleteCookiesAndShowForm() {
+      Cookies.remove('firstname');
+      Cookies.remove('email');
+      showForm();
+    }
+
+    function showWelcomeMessageOrForm() {
+      var firstname = Cookies.get("firstname");
+      if (firstname) {
+        document.body.innerHTML = `<h1>Welcome: ${firstname} <a href='' onclick="deleteCookiesAndShowForm()" id="welcome" style="font-style: italic; text-decoration: none; color: black;" >(logout)</a></h1>`;
+      } else {
+        showForm();
+      }
+    }
+  </script>
+</body>
+</html>
